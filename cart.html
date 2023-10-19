@@ -75,19 +75,19 @@
               <a href="index.html">Home</a>
             </li>
             <li class="has-children">
-              <a href="shop.html">Shop</a>
+              <a href="/shop/shop.html">Shop</a>
               <ul class="dropdown">
-                <li><a href="product.html">Shoes</a></li>
-                <li><a href="product.html">Material shoes cleaning</a></li>
-                <li><a href="product.html">Shoes accessories</a></li>
+                <li><a href="/shop/shoes.html">Shoes</a></li>
+                <li><a href="/shop/materialCleaning.html">Material shoes cleaning</a></li>
+                <li><a href="/shop/accessoriesShoes.html">Shoes accessories</a></li>
               </ul>
             </li>
             <li class="has-children">
-              <a href="shop.html">Service</a>
+              <a href="/service//service.html">Service</a>
               <ul class="dropdown">
-                <li><a href="product.html">Cleaning shoes</a></li>
-                <li><a href="product.html">Protecting shoes</a></li>
-                <li><a href="product.html">Custom Shoes</a></li>
+                <li><a href="/service/cleaningShoes.html">Cleaning shoes</a></li>
+                <li><a href="/service/protectShoes.html">Protecting shoes</a></li>
+                <li><a href="/service/customShoes.html">Custom Shoes</a></li>
               </ul>
             </li>
             <li><a href="about.html">About us</a></li>
@@ -105,6 +105,15 @@
         </div>
       </div>
     </div>
+    <div class="col-md-11 mt-3">
+      <div class="row justify-content-end">
+        <a href="pendingCart.html">
+          <button class="btn btn-outline-primary btn-sm btn-block">
+            Pending Cart</button>
+        </a>
+      </div>
+    </div>
+
 
     <div class="site-section">
       <div class="container">
@@ -132,7 +141,7 @@
                     </td>
                     <td>$49.00</td>
                     <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
+                      <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                         </div>
@@ -156,8 +165,8 @@
                       <h2 class="h5 text-black">Polo Shirt</h2>
                     </td>
                     <td>$49.00</td>
-                    <td>
-                      <div class="input-group mb-3" style="max-width: 120px;">
+                    <td style="width: 150px;">
+                      <div class="input-group mb-3">
                         <div class="input-group-prepend">
                           <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                         </div>
@@ -170,7 +179,9 @@
 
                     </td>
                     <td>$49.00</td>
-                    <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                    <td>
+                      <div class="btn btn-primary btn-sm">X</div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -178,17 +189,24 @@
           </form>
         </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <div class="row mb-5">
-              <div class="col-md-6 mb-3 mb-md-0">
-                <button class="btn btn-primary btn-sm btn-block">Update Cart</button>
-              </div>
-              <div class="col-md-6">
-                <button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
-              </div>
-            </div>
-            <div class="row">
+        <div class="row justify-content-between">
+
+
+          <div class="col-md-3">
+            <a href="/shop/shop.html">
+              <button class="btn btn-outline-primary btn-sm btn-block">
+                Continue Shopping</button>
+            </a>
+          </div>
+
+
+          <div class="col-md-3">
+            <button class="btn btn-primary btn-sm btn-block" onclick="window.location='checkout.html'">
+              Proceed To Checkout</button>
+            </a>
+          </div>
+          <!-- </div> -->
+          <!-- <div class="row">
               <div class="col-md-12">
                 <label class="text-black h4" for="coupon">Coupon</label>
                 <p>Enter your coupon code if you have one.</p>
@@ -199,9 +217,11 @@
               <div class="col-md-4">
                 <button class="btn btn-primary btn-sm">Apply Coupon</button>
               </div>
-            </div>
-          </div>
-          <div class="col-md-6 pl-5">
+            </div> -->
+
+          <!-- </div> -->
+
+          <!-- <div class="col-md-6 pl-5">
             <div class="row justify-content-end">
               <div class="col-md-7">
                 <div class="row">
@@ -234,8 +254,10 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
+
         </div>
+
       </div>
     </div>
 

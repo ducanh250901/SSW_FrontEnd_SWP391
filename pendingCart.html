@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>System &mdash; Shoes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -19,13 +18,11 @@
 
     <link rel="stylesheet" href="css/aos.css">
 
-    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
 <body>
-
-    <!-- home, about, product, service, blog, contact -->
 
     <div class="site-wrap">
         <header class="site-navbar" role="banner">
@@ -86,7 +83,7 @@
                             </ul>
                         </li>
                         <li class="has-children">
-                            <a href="/service/service.html">Service</a>
+                            <a href="/service//service.html">Service</a>
                             <ul class="dropdown">
                                 <li><a href="/service/cleaningShoes.html">Cleaning shoes</a></li>
                                 <li><a href="/service/protectShoes.html">Protecting shoes</a></li>
@@ -100,29 +97,140 @@
             </nav>
         </header>
 
-        <!-- Login -->
-        <div class="site-blocks-cover">
-            <div class="main">
-                <input type="checkbox" id="chk" aria-hidden="true">
+        <div class="bg-light py-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 mb-0"><a href="index.html">Home</a>
+                        <span class="mx-2 mb-0">/</span>
+                        <a href="cart.html">Cart</a>
+                        <span class="mx-2 mb-0">/</span>
+                        <strong class="text-black">Pending Cart</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                <div class="signup">
-                    <form id="registrationForm">
-                        <label for="chk" aria-hidden="true">Register</label>
-                        <input type="text" id="registerUsername" name="txt" placeholder="User name" required="">
-                        <input type="password" id="registerPassword" name="pswd" placeholder="Password" required="">
-                        <button type="submit" id="registerButton">Register</button>
+        <div class="site-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <form class="col-md-12" method="post">
+                        <div class="site-blocks-table">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">History Cart</th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Price</th>
+                                        <!-- <th class="product-quantity">Quantity</th> -->
+                                        <th class="product-total">Total</th>
+                                        <th class="product-remove">Choose</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="product-thumbnail">
+                                            <!-- <img src="images/cloth_1.jpg" alt="Image" class="img-fluid"> -->
+                                            <h2 class="h5 text-black">ID Cart</h2>
+
+                                        </td>
+                                        <td class="product-name">
+                                            <h2 class="h5 text-black">Top Up T-Shirt $49.00</h2>
+                                            <h2 class="h5 text-black">Top Up T-Shirt</h2>
+
+                                        </td>
+                                        <td>$49.00</td>
+                                        <!-- <td style="width: 180px;">
+                                            <div class="input-group mb-3" style="max-width: 120px; margin-left: 10px;">
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-outline-primary js-btn-minus"
+                                                        type="button">&minus;</button>
+                                                </div>
+                                                <input type="text" class="form-control text-center" value="1"
+                                                    placeholder="" aria-label="Example text with button addon"
+                                                    aria-describedby="button-addon1">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-outline-primary js-btn-plus"
+                                                        type="button">&plus;</button>
+                                                </div>
+                                            </div>
+
+                                        </td> -->
+                                        <td>$49.00</td>
+                                        <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
                     </form>
                 </div>
 
-                <div class="login">
-                    <form id="loginForm">
-                        <label for="chk" aria-hidden="true">Login</label>
-                        <input type="text" id="loginUsername" name="txt" placeholder="User name" required="">
-                        <input type="password" id="loginPassword" name="pswd" placeholder="Password" required="">
-                        <button type="submit" id="loginButton">Login</button>
-                    </form>
-                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- <div class="row mb-5">
+                            <div class="col-md-4 mb-3 mb-md-0">
+                                <button class="btn btn-outline-primary btn-sm btn-block">Update Cart</button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary btn-sm btn-block">Continue Shopping</button>
+                            </div>
+                            <div class="col-md-5">
+                                <a href="pendingCart.html">
+                                    <button class="btn btn-outline-primary btn-sm btn-block">
+                                        Check out </button>
+                                </a>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label class="text-black h4" for="coupon">Coupon</label>
+                                <p>Enter your coupon code if you have one.</p>
+                            </div>
+                            <div class="col-md-8 mb-3 mb-md-0">
+                                <input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary btn-sm">Apply Coupon</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pl-5">
+                        <div class="row justify-content-end">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="col-md-12 text-right border-bottom mb-5">
+                                        <h3 class="text-black h4 text-uppercase">Cart Totals</h3>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Subtotal</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <strong class="text-black">$230.00</strong>
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <div class="col-md-6">
+                                        <span class="text-black">Total</span>
+                                    </div>
+                                    <div class="col-md-6 text-right">
+                                        <strong class="text-black">$230.00</strong>
+                                    </div>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button class="btn btn-primary btn-lg py-3 btn-block"
+                                            onclick="window.location='checkout.html'">Proceed To Checkout</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -200,8 +308,6 @@
         </footer>
     </div>
 
-
-
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <script src="js/popper.min.js"></script>
@@ -211,9 +317,7 @@
     <script src="js/aos.js"></script>
 
     <script src="js/main.js"></script>
-    <script src="registerLogin.js"></script>
-    <!-- <script src="register.js"></script> -->
-    <!-- <script src="login.js"></script> -->
+
 </body>
 
 </html>
