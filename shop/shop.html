@@ -48,6 +48,15 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
+                  <li>
+
+                    <!-- Welcome Name -->
+                    <h4 class="mr-2">
+                      <span id="loggedInUser">
+                      </span>
+                    </h4>
+
+                  </li>
                   <li><a href="/login.html"><span class="icon icon-person"></span></a></li>
                   <!-- <li><a href="#"><span class="icon icon-heart-o"></span></a></li> -->
                   <li>
@@ -162,35 +171,23 @@
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="images/shoe_1.jpg" alt="Image placeholder"
-                        class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
               </div> -->
+
 
             </div>
 
             <!-- pagination -->
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
-                <div class="site-block-27">
+                <div class="site-block-27" id="pagination">
                   <ul>
-                    <!-- <li><a href="#">&lt;</a></li>
+                    <li><a href="#">&lt;</a></li>
                     <li class="active"><span>1</span></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li> -->
+                    <li><a href="#">&gt;</a></li>
                   </ul>
                 </div>
               </div>
@@ -217,7 +214,7 @@
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
                 <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
+                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" />
               </div>
 
               <!-- <div class="mb-4">
@@ -395,6 +392,11 @@
   <script src="/js/aos.js"></script>
   <script src="/pagination.js"></script>
   <script src="/js/main.js"></script>
+
+  <script src="/welcomeName.js"></script>
+  <script src="shop.js"></script>
+  <script src="paginationShop.js"></script>
+
 
 </body>
 

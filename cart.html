@@ -48,6 +48,15 @@
             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
               <div class="site-top-icons">
                 <ul>
+                  <li>
+
+                    <!-- Welcome Name -->
+                    <h4 class="mr-2">
+                      <span id="loggedInUser">
+                      </span>
+                    </h4>
+
+                  </li>
                   <li><a href="login.html"><span class="icon icon-person"></span></a></li>
                   <!-- <li><a href="#"><span class="icon icon-heart-o"></span></a></li> -->
                   <li>
@@ -107,10 +116,13 @@
     </div>
     <div class="col-md-11 mt-3">
       <div class="row justify-content-end">
-        <a href="pendingCart.html">
-          <button class="btn btn-outline-primary btn-sm btn-block">
-            Pending Cart</button>
-        </a>
+        <div class="row ">
+          <button class="btn btn-outline-primary btn-sm btn-block" id="pending-order-button">
+            Pending Order</button>
+        </div>
+        <!-- <a href="pendingCart.html"> -->
+
+        <!-- </a> -->
       </div>
     </div>
 
@@ -120,7 +132,7 @@
         <div class="row mb-5">
           <form class="col-md-12" method="post">
             <div class="site-blocks-table">
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="cart-table">
                 <thead>
                   <tr>
                     <th class="product-thumbnail">Image</th>
@@ -344,6 +356,10 @@
   <script src="js/aos.js"></script>
 
   <script src="js/main.js"></script>
+
+  <script src="welcomeName.js"></script>
+  <script src="pendingOrder.js"></script>
+
 
 </body>
 

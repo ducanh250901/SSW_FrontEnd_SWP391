@@ -10,7 +10,6 @@ const productList = [
         description: "Finding perfect products",
         price: "$50",
     },
-
     // Thêm các sản phẩm khác vào đây
 ];
 
@@ -57,11 +56,16 @@ function createPagination() {
     for (let page = 1; page <= totalPages; page++) {
         const li = document.createElement("li");
         li.innerHTML = `<a href="#">${page}</a>`;
+
         li.addEventListener("click", () => {
             displayProducts(page);
             setActivePage(page);
         });
+
+
         paginationContainer.appendChild(li);
+
+
     }
 
     displayProducts(1);
