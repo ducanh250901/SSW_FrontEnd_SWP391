@@ -1,35 +1,35 @@
+document.addEventListener('DOMContentLoaded', function () {
 
-// Sự kiện khi nhấn nút "Pending Order"
-const pendingOrderButton = document.querySelector('#pending-order-button');
-const cartTable = document.querySelector('#cart-table');
-const pendingOrderTable = document.querySelector('#pending-order-table');
-const cartTableBody = cartTable.querySelector('tbody');
-const pendingOrderTableBody = pendingOrderTable.querySelector('tbody');
+    document.getElementById('pending-order-button').addEventListener('click', function () {
+        // Xử lý khi nút "Pending Order" được nhấn
+        // Lấy giỏ hàng từ localStorage
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-pendingOrderButton.addEventListener('click', function () {
-    // Tạo một hàng trống trong bảng trang Pending Order
-    const newRow = document.createElement('tr');
-    pendingOrderTableBody.appendChild(newRow);
+        // Lấy ra table "Pending Order"
+        const pendingOrderTable = document.getElementById('pending-order-table');
+        const tbody = pendingOrderTable.getElementsByTagName('tbody')[0];
 
-    // Lấy tất cả các hàng trong bảng trang Cart
-    const cartRows = cartTableBody.querySelectorAll('tr');
+        // Lặp qua từng sản phẩm trong giỏ hàng và thêm chúng vào bảng "Pending Order"
+        cart.forEach(product => {
+            const row = tbody.insertRow();
+            const cell1 = row.insertCell(0);
+            const cell2 = row.insertCell(1);
+            const cell3 = row.insertCell(2);
+            const cell4 = row.insertCell(3);
+            const cell5 = row.insertCell(4);
 
-    // Duyệt qua từng hàng trong bảng trang Cart
-    cartRows.forEach(function (cartRow) {
-        // Sao chép toàn bộ nội dung của hàng trong trang Cart
-        const clonedRow = cartRow.cloneNode(true);
+            cell1.innerHTML = `<h2 class="h5 text-black">ID Cart</h2>`;
+            cell2.innerHTML = `<h2 class="h5 text-black">${product.name} $${product.price}</h2>`;
+            cell3.textContent = `$${product.price}`;
+            cell4.textContent = `$${product.price}`;
+            cell5.innerHTML = `<button href="#" class="btn btn-primary btn-sm">X</button>`;
+        });
 
-        // Thêm hàng đã sao chép vào hàng trống trong trang Pending Order
-        newRow.appendChild(clonedRow);
+        // Xóa giỏ hàng
+        localStorage.removeItem('cart');
+
+        // Hiển thị thông báo cho người dùng
+        alert('Đã chuyển các sản phẩm vào "Pending Order". Giỏ hàng đã được làm trống.');
     });
 
-    // Xóa toàn bộ nội dung trong bảng trang Cart
-    cartTableBody.innerHTML = '';
-
-    // Ẩn bảng trang Cart (nếu bạn muốn ẩn nó sau khi di chuyển)
-    cartTable.style.display = 'none';
-
-    // Hiển thị bảng trang Pending Order (nếu bạn muốn hiển thị sau khi di chuyển)
-    pendingOrderTable.style.display = 'table';
-});
-
+})

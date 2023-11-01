@@ -57,7 +57,13 @@
                     </h4>
 
                   </li>
-                  <li><a href="login.html"><span class="icon icon-person"></span></a></li>
+                  <li class="dropdown">
+                    <a href="/login.html"><span class="icon icon-person"></span></a>
+                    <ul class="dropdown-content">
+                      <li><span class="icon-sign-out"></span><a href="/logout.html">Logout</a></li>
+
+                    </ul>
+                  </li>
                   <!-- <li><a href="#"><span class="icon icon-heart-o"></span></a></li> -->
                   <li>
                     <a href="cart.html" class="site-cart">
@@ -144,7 +150,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td class="product-thumbnail">
                       <img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
                     </td>
@@ -167,34 +173,9 @@
                     </td>
                     <td>$49.00</td>
                     <td><a href="#" class="btn btn-primary btn-sm">X</a></td>
-                  </tr>
+                  </tr> -->
 
-                  <tr>
-                    <td class="product-thumbnail">
-                      <img src="images/cloth_2.jpg" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name">
-                      <h2 class="h5 text-black">Polo Shirt</h2>
-                    </td>
-                    <td>$49.00</td>
-                    <td style="width: 150px;">
-                      <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                          <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
-                        </div>
-                        <input type="text" class="form-control text-center" value="1" placeholder=""
-                          aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <div class="input-group-append">
-                          <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
-                        </div>
-                      </div>
 
-                    </td>
-                    <td>$49.00</td>
-                    <td>
-                      <div class="btn btn-primary btn-sm">X</div>
-                    </td>
-                  </tr>
                 </tbody>
               </table>
             </div>
@@ -359,6 +340,7 @@
 
   <script src="welcomeName.js"></script>
   <script src="pendingOrder.js"></script>
+  <script src="cart.js"></script>
 
 
 </body>
