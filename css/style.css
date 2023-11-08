@@ -7,7 +7,12 @@ body {
 }
 
 .img-fluid {
-  width: 239px;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-product {
+  width: 240px;
   height: 170px;
 }
 
@@ -843,6 +848,10 @@ a:hover {
 
 .block-4 .block-4-text h3 a {
   text-decoration: none;
+}
+
+.product-infor {
+  border-radius: 3px;
 }
 
 .block-5 {

@@ -13,22 +13,22 @@ fetch(apiUrl)
     data.data.forEach((shop) => {
       const shopAll = document.createElement("div");
       shopAll.innerHTML = `
-                  <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                      <div class="block-4 text-center border">
+                  <div class=" col-lg-12 mb-4" data-aos="fade-up">
+                      <div class=" text-center ">
                         <figure class="block-4-image">
                         <a href="productDetail.html?productID=${shop.id}">
-                        <img src="${shop.image}" 
-                        alt="${shop.image}" class="img-fluid"></a>
+                        <img src="${shop.pictureLink}" 
+                        alt="${shop.pictureLink}" class="img-product"></a>
                         </figure>
-                        <div class="block-4-text p-4">
-                          <h3><a href="productDetail.html?productID=${shop.id}">
-                          ${shop.name}</a></h3>
-                          <p class="mb-0">${shop.description}</p>
-                          <p class="text-primary font-weight-bold">${shop.cost}</p>
+                        <div class="product-infor">
+                          <h8><a href="productDetail.html?productID=${shop.id}">
+                          ${shop.name}</a></h8>
+                          <p class="mb-0">${shop.catagories}</p>
+                          <p class="mb-0">${shop.brand}</p>
+                          <p class="text-primary font-weight-bold">${shop.price}</p>
                         </div>
                       </div>
-                  </div>
-                          `;
+                  </div>`;
       productList.appendChild(shopAll);
     });
   })

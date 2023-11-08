@@ -19,5 +19,7 @@ fetch(apiUrl)
         document.getElementById('product-size').textContent = data.size;
         document.getElementById('product-price').textContent = data.price;
         // Các thông tin khác cần được hiển thị
+        // save data to local storage
+         localStorage.setItem('productDataDetail', JSON.stringify(productDataDetail));
     })
     .catch((error) => console.error("Lỗi khi gọi API:", error));

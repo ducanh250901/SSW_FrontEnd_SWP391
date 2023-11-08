@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="/css/aos.css">
 
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
 </head>
 
@@ -140,7 +142,7 @@
                 <div class="input-group-prepend">
                   <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
                 </div>
-                <input type="number" class="form-control text-center" value="1" placeholder=""
+                <input type="number" class="form-control text-center" id="quantity" value="1" placeholder=""
                   aria-label="Example text with button addon" aria-describedby="button-addon1">
                 <div class="input-group-append">
                   <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
@@ -148,7 +150,7 @@
               </div>
 
             </div>
-            <p><button class="buy-now btn btn-sm btn-primary">Add To Cart</button></p>
+            <p><button onclick="addToCart()" class="buy-now btn btn-sm btn-primary">Add To Cart</button></p>
 
           </div>
         </div>

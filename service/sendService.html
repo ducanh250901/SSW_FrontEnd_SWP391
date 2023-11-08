@@ -21,6 +21,9 @@
   <!-- MDB -->
   <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" /> -->
 
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
   <link rel="stylesheet" href="/css/aos.css">
 
   <link rel="stylesheet" href="/css/style.css">
@@ -46,7 +49,7 @@
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
               <div class="site-logo">
-                <a href="index.html" class="js-logo-clone">Shoppers</a>
+                <a href="/index.html" class="js-logo-clone">Shoppers</a>
               </div>
             </div>
 
@@ -72,7 +75,7 @@
                   </li>
 
                   <li>
-                    <a href="cart.html" class="site-cart">
+                    <a href="/cart.html" class="site-cart">
                       <span class="icon icon-shopping_cart"></span>
 
                       <!-- --------------------------------- -->
@@ -111,8 +114,8 @@
                 <li><a href="/service/customShoes.html">Custom Shoes</a></li>
               </ul>
             </li>
-            <li><a href="about.html">About us</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/about.html">About us</a></li>
+            <li><a href="/contact.html">Contact</a></li>
           </ul>
         </div>
       </nav>
@@ -121,7 +124,7 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="index.html">Home</a>
+          <div class="col-md-12 mb-0"><a href="/index.html">Home</a>
             <span class="mx-2 mb-0">/</span>
             <a href="service.html">Service all</a>
             <span class="mx-2 mb-0">/</span>
@@ -134,7 +137,7 @@
   </div>
 
   <!-- Carousel wrapper -->
-  <section class="ftco-section">
+  <!-- <section class="ftco-section">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -204,7 +207,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
   <!-- Carousel wrapper -->
 
   <div class="site-section">
@@ -214,25 +217,34 @@
         <h2 class="h3 mb-3 text-black">Get In Touch</h2>
       </div>
 
-      <form action="#" method="post">
+      <form method="get" id="myForm">
         <div class="row">
           <div class="col-md-6">
             <div class="p-2 p-lg-4 border">
+
+              <div class="form-group row">
+                <div class="col-md-12">
+                  <label for="c_type" class="text-black" id="c_type">Service Type:
+                  </label>
+                  <span class="text-danger">*</span>
+                </div>
+              </div>
+
               <div class="form-group row">
                 <div class="col-md-6">
                   <label for="c_fname" class="text-black">Full Name <span class="text-danger">*</span></label>
-                  <input type="text" class="form-control" id="c_fname" name="c_fname">
+                  <input type="text" class="form-control" id="c_fname" name="c_fname" required>
                 </div>
 
                 <div class="col-md-6">
                   <label for="c_lname" class="text-black">Phone Number <span class="text-danger">*</span></label>
-                  <input type="number" class="form-control" id="c_lname" name="c_lname">
+                  <input type="number" class="form-control" id="c_lname" name="c_lname" required>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-12">
                   <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="c_email" name="c_email" placeholder="">
+                  <input type="email" class="form-control" id="c_email" name="c_email" placeholder="" required>
                 </div>
               </div>
 
@@ -259,7 +271,8 @@
 
               <div class="form-group row">
                 <div class="col-lg-12">
-                  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
+                  <button type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
+                    Send Message
                 </div>
               </div>
             </div>
@@ -271,7 +284,8 @@
 
             <div class="p-3 border mb-3">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="deliveryOption" id="atStore">
+                <input class="form-check-input" type="radio" name="deliveryOption" id="atStore" value="At Store"
+                  required>
                 <label class="form-check-label" for="atStore">
                   <span class="d-block text-black h6 text-uppercase font-weight-bold">At store</span>
                 </label>
@@ -285,7 +299,8 @@
 
             <div class="p-3 border mb-3">
               <div class="form-check">
-                <input class="form-check-input" type="radio" name="deliveryOption" id="shipping">
+                <input class="form-check-input" type="radio" name="deliveryOption" id="shipping" value="Shipping"
+                  required>
                 <label class="form-check-label" for="shipping">
                   <span class="d-block text-black h6 text-uppercase font-weight-bold">Import 2-way shoe shipping</span>
                 </label>
@@ -423,7 +438,7 @@
             <script>document.write(new Date().getFullYear());</script> All rights reserved | Thanks for
             using our
             services
-            by <a href="index.html" class="text-primary">Shoes System</a>
+            by <a href="/index.html" class="text-primary">Shoes System</a>
             with <i class="icon-heart" aria-hidden="true"></i>
 
           </p>
@@ -447,6 +462,8 @@
 
   <script src="/js/main.js"></script>
   <script src="/welcomeName.js"></script>
+  <script src="serviceDetail.js"></script>
+  <script src="sendMessage.js"></script>
 
 </body>
 

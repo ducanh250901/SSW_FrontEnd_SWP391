@@ -6,11 +6,11 @@ const product = document.getElementById('product-list');
 let allProducts = []; // Lưu trữ tất cả sản phẩm từ API
 
 // Gọi API và lấy tất cả sản phẩm
-fetch('https://localhost:7199/Product/GetAllProduct')
+fetch('https://localhost:7199/Service/GetAllService')
     .then(response => response.json())
     .then(data => {
         // console.log('data: >>>>', data);
-        allProducts = data;
+        allProducts = data.data;
         console.log('allProducts: >>>>', allProducts);
         // Hiển thị trang đầu tiên khi trang web được tải
         showProductsOnPage(currentPage);
@@ -21,27 +21,27 @@ fetch('https://localhost:7199/Product/GetAllProduct')
 function showProductsOnPage(page) {
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const productsToDisplay = allProducts.toString().slice(startIndex, endIndex);
+    const productsToDisplay = allProducts.slice(startIndex, endIndex);
     product.innerHTML = ''; // Xóa dữ liệu cũ
 
-    productsToDisplay.forEach(product => {
+    productsToDisplay.forEach(service => {
         // Tạo phần tử DOM cho sản phẩm tương tự như trước
         const productElement = document.createElement('div');
         productElement.innerHTML = `
-    <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-    <div class="block-4 text-center border">
-      <figure class="block-4-image">
-        <a href="productDetail.html"><img src="${shop.image}" 
-        alt="${shop.image}"
-            class="img-fluid"></a>
-      </figure>
-      <div class="block-4-text p-4">
-        <h3><a href="productDetail.html">${shop.name}</a></h3>
-        <p class="mb-0">${shop.description}</p>
-        <p class="text-primary font-weight-bold">${shop.cost}</p>
-      </div>
+        <div class=" col-lg-12 mb-4" data-aos="fade-up">
+        <div class=" text-center ">
+          <figure class="block-4-image">
+            <a href="sendService.html?serviceID=${service.id}">
+            <img src="${service.pictureLink}" 
+              alt="${service.pictureLink}" class="img-product"></a>
+          </figure>
+            <div class="product-infor">
+            <h5><a href="sendService.html?serviceID=${service.id}">
+              ${service.type}</a></h5>               
+              <p class="text-primary font-weight-bold">${service.price}</p>
+            </div>
+        </div>
     </div>
-</div>
     `;
         product.appendChild(productElement);
     });
