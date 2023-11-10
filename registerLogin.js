@@ -1,3 +1,37 @@
+
+// check login
+// if (checkLogin() == false) {
+//     alert("You are not logged in!");
+//     window.location.href = "/login.html";
+// }
+
+function checkLogin() {
+    const token = localStorage.getItem('token');
+    if (token) {
+        setUserLogin(token);
+        return true;
+    }
+    return false;
+}
+
+function setUserLogin(token) {
+    let user = decodeJWT(token);
+    localStorage.setItem('userLogin', JSON.stringify(user));
+}
+
+function decodeJWT(token) {
+    const parts = token.split(".");
+    if (parts.length !== 3) {
+        throw new Error("Invalid JWT format");
+    }
+
+    const encodedPayload = parts[1];
+    const decodedPayload = atob(encodedPayload);
+    const payload = JSON.parse(decodedPayload);
+
+    return payload;
+}
+
 // Đăng ký
 document
     .getElementById("registrationForm")
@@ -52,19 +86,36 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     })
         .then((response) => response.json())
         .then((data) => {
+            console.log('data:>>>', data);
             // Xử lý phản hồi sau khi đăng nhập
             if (data.status == true) {
                 alert("Login status: " + data.message);
                 var token = data.data.token;
                 console.log(token);
+
+                let user = decodeJWT(token);
+                console.log('user: >>>', user);
+
+
+                if (user.Role == "Admin") {
+                    alert("You are admin!");
+                    window.location.href = "/admin/index.html";
+                } else if (user.Role == "Staff") {
+                    alert("You are Staff!");
+                    window.location.href = "/admin/order-product.html";
+                } else {
+                    window.location.href = "/index.html"
+                }
+
                 var username = loginUsername;
                 console.log(username);
                 localStorage.setItem("token", token);
                 localStorage.setItem("userName", username);
 
+
                 // document.getElementById("welcome").style.display = "block";
                 // document.getElementById("loggedInUser").innerText = loginUsername;
-                window.location.href = "index.html";
+                // window.location.href = "index.html";
 
                 // document.querySelector(".signup").style.display = "none";
                 // document.querySelector(".login").style.display = "none";

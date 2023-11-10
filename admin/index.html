@@ -25,21 +25,7 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="../auth.js"></script>
-    <script>
-        // check login
-        if (checkLogin() == false) {
-            alert("You are not logged in!");
-            window.location.href = "authentication-login1.html";
-        }
-        // // check admin
-        //     var token = localStorage.getItem("userLogin");
-        //     var decoded = decodeJWT(token);
-        //     console.log(decoded);
-        //     if (decoded.role != "Admin") {
-        //         alert ("You are not admin!");
-        //         window.location.href = "authentication-login1.html";
-        //     }
-    </script>
+
     </head>
 
     <body>
@@ -143,7 +129,7 @@
                                             class="svg-icon mr-2 ml-1"></i>
                                         My Profile</a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                    <a class="dropdown-item" href="/logout.html"><i data-feather="power"
                                             class="svg-icon mr-2 ml-1"></i>
                                         Logout</a>
                                     <div class="dropdown-divider"></div>
@@ -194,7 +180,8 @@
                                     </span></a>
                                 <ul aria-expanded="false" class="collapse first-level base-level-line">
                                     <li class="sidebar-item">
-                                        <a href="order-product.html" class="sidebar-link"><span class="hide-menu"> Order Product
+                                        <a href="order-product.html" class="sidebar-link"><span class="hide-menu"> Order
+                                                Product
                                             </span></a>
                                     </li>
                                     <li class="sidebar-item">
@@ -218,8 +205,8 @@
                             </li>
 
                             <li class="sidebar-item">
-                                <a class="sidebar-link sidebar-link" href="authentication-login1.html"
-                                    aria-expanded="false"><i data-feather="log-out" class="feather-icon"></i><span
+                                <a class="sidebar-link sidebar-link" href="/logout.html" aria-expanded="false"><i
+                                        data-feather="log-out" class="feather-icon"></i><span
                                         class="hide-menu">Logout</span></a>
                             </li>
                         </ul>
