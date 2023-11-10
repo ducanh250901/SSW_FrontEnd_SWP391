@@ -32,6 +32,29 @@ function decodeJWT(token) {
     return payload;
 }
 
+// Hàm kiểm tra quyền truy cập vào trang admin
+function checkAdminAccess() {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+        alert('You are not logged in!');
+        window.location.href = '/login.html';
+        return;
+    }
+
+    let user = decodeJWT(token);
+    if (!user || user.Role !== 'Admin' || user.Role !== 'Staff') {
+        window.location.href = '/index.html';
+        alert('You do not have access to admin page!');
+    }
+}
+
+// Gọi hàm kiểm tra quyền truy cập khi trang admin được tải
+if (window.location.pathname.includes('/admin')) {
+    checkAdminAccess();
+}
+
+
 // Đăng ký
 document
     .getElementById("registrationForm")
@@ -107,6 +130,13 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
                     window.location.href = "/index.html"
                 }
 
+                // Gọi hàm kiểm tra quyền truy cập khi trang admin được tải
+                if (window.location.pathname === '/admin/index.html' || window.location.pathname === '/admin/order-product.html') {
+                    checkAdminAccess();
+                }
+
+                // Ví dụ kiểm tra vai trò trước khi chuyển hướng
+
                 var username = loginUsername;
                 console.log(username);
                 localStorage.setItem("token", token);
@@ -120,7 +150,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
                 // document.querySelector(".signup").style.display = "none";
                 // document.querySelector(".login").style.display = "none";
             } else {
-                alert("Login failed");
+                alert(`Login failed \n${data.message}`);
             }
         });
 });
