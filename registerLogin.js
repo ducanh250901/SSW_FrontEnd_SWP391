@@ -49,10 +49,7 @@ function checkAdminAccess() {
     }
 }
 
-// Gọi hàm kiểm tra quyền truy cập khi trang admin được tải
-if (window.location.pathname.includes('/admin')) {
-    checkAdminAccess();
-}
+
 
 
 // Đăng ký
@@ -121,10 +118,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
 
                 if (user.Role == "Admin") {
-                    alert("You are admin!");
+                    alert("Hello admin!");
                     window.location.href = "/admin/index.html";
                 } else if (user.Role == "Staff") {
-                    alert("You are Staff!");
+                    alert("Hello Staff!");
                     window.location.href = "/admin/order-product.html";
                 } else {
                     window.location.href = "/index.html"
@@ -142,13 +139,6 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
                 localStorage.setItem("token", token);
                 localStorage.setItem("userName", username);
 
-
-                // document.getElementById("welcome").style.display = "block";
-                // document.getElementById("loggedInUser").innerText = loginUsername;
-                // window.location.href = "index.html";
-
-                // document.querySelector(".signup").style.display = "none";
-                // document.querySelector(".login").style.display = "none";
             } else {
                 alert(`Login failed \n${data.message}`);
             }

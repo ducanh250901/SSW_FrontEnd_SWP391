@@ -112,7 +112,7 @@
                                     width="40" />
                                 <span class="ml-2 d-none d-lg-inline-block">
                                     <span>Hello,</span>
-                                    <span class="text-dark">Jason Doe</span>
+                                    <span id="userLoginName" class="text-dark">Jason Doe</span>
                                     <i data-feather="chevron-down" class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -164,24 +164,25 @@
                                 </i>
                                 <span class="hide-menu">Forms</span></a>
                         </li> -->
-                       <li class="sidebar-item">
-                                <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i
-                                        data-feather="grid" class="feather-icon"></i>
-                                    <span class="hide-menu"> Orders
-                                    </span></a>
-                                <ul aria-expanded="false" class="collapse first-level base-level-line">
-                                    <li class="sidebar-item">
-                                        <a href="order-product.html" class="sidebar-link"><span class="hide-menu"> Order Product
-                                            </span></a>
-                                    </li>
-                                    <li class="sidebar-item">
-                                        <a href="order-service.html" class="sidebar-link"><span class="hide-menu">
-                                                Order Service </span></a>
-                                    </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i
+                                    data-feather="grid" class="feather-icon"></i>
+                                <span class="hide-menu"> Orders
+                                </span></a>
+                            <ul aria-expanded="false" class="collapse first-level base-level-line">
+                                <li class="sidebar-item">
+                                    <a href="order-product.html" class="sidebar-link"><span class="hide-menu"> Order
+                                            Product
+                                        </span></a>
+                                </li>
+                                <li class="sidebar-item">
+                                    <a href="order-service.html" class="sidebar-link"><span class="hide-menu">
+                                            Order Service </span></a>
+                                </li>
 
 
-                                </ul>
-                            </li>
+                            </ul>
+                        </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link sidebar-link" href="ui-cards.html" aria-expanded="false"><i
                                     data-feather="sidebar" class="feather-icon"></i>
@@ -723,6 +724,12 @@
     <!--This page plugins -->
     <script src="assets/extra-libs/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="dist/js/pages/datatable/datatable-basic.init.js"></script>
+
+    <script>
+        let userLoginName = document.getElementById("userLoginName");
+        var username = localStorage.getItem("userName");
+        userLoginName.innerHTML = username;
+    </script>
 </body>
 
 </html>

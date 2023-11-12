@@ -113,7 +113,7 @@
                                     width="40" />
                                 <span class="ml-2 d-none d-lg-inline-block">
                                     <span>Hello,</span>
-                                    <span class="text-dark">Jason Doe</span>
+                                    <span id="userLoginName" class="text-dark">Jason Doe</span>
                                     <i data-feather="chevron-down" class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right user-dd animated flipInY">
@@ -168,16 +168,17 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i
                                     data-feather="grid" class="feather-icon"></i>
-                                <span class="hide-menu"> Orders' Status
+                                <span class="hide-menu"> Orders
                                 </span></a>
                             <ul aria-expanded="false" class="collapse first-level base-level-line">
                                 <li class="sidebar-item">
-                                    <a href="table1.html" class="sidebar-link"><span class="hide-menu"> Table
+                                    <a href="order-product.html" class="sidebar-link"><span class="hide-menu"> Order
+                                            Product
                                         </span></a>
                                 </li>
                                 <li class="sidebar-item">
-                                    <a href="table2.html" class="sidebar-link"><span class="hide-menu">
-                                            Table </span></a>
+                                    <a href="order-service.html" class="sidebar-link"><span class="hide-menu">
+                                            Order Service </span></a>
                                 </li>
 
 
@@ -219,12 +220,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Table Sizing</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Account</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Table</li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Account</li>
                                 </ol>
                             </nav>
                         </div>
@@ -245,20 +246,20 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">Default Size Light Table</h4>
+                            <h4 class="card-title">Accounts</h4>
                         </div>
                         <table class="table">
+
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>First</th>
-                                    <th>Last</th>
-                                    <th>Handle</th>
-
-                                    <th>Note</th>
-
+                                    <th>Name</th>
+                                    <th>Password</th>
+                                    <th>Status</th>
+                                    <th>Others</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 <tr>
                                     <th>1</th>
@@ -266,59 +267,6 @@
                                     <td>Otto</td>
                                     <td>@mdo</td>
                                     <td>
-                                        <i class="fa fa-plus-circle" data-toggle="modal" data-target="#myModal"></i>
-
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog" role="form">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h4 class="modal-title" id="myModalLabel">
-                                                            Modal title
-                                                        </h4>
-                                                    </div>
-
-                                                    <form>
-                                                        <div class="modal-body">
-                                                            <div class="form-group">
-                                                                <label for="email1">Email address</label>
-                                                                <input type="email" class="form-control" id="email1"
-                                                                    aria-describedby="emailHelp"
-                                                                    placeholder="Enter email" />
-                                                                <small id="emailHelp" class="form-text text-muted">Your
-                                                                    information is safe with us.</small>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password1" placeholder="Password" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Confirm Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password2" placeholder="Confirm Password" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">
-                                                                Close
-                                                            </button>
-                                                            <button type="button" class="btn btn-primary">
-                                                                Save changes
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
                                         <i class="fa fa-trash" data-toggle="modal" data-target="#myModal"></i>
                                         <!-- Modal -->
                                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
@@ -330,31 +278,27 @@
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
-                                                        <h4 class="modal-title" id="myModalLabel">
-                                                            Modal title
-                                                        </h4>
+
                                                     </div>
 
                                                     <form>
                                                         <div class="modal-body">
                                                             <div class="form-group">
-                                                                <label for="email1">Email address</label>
-                                                                <input type="email" class="form-control" id="email1"
-                                                                    aria-describedby="emailHelp"
-                                                                    placeholder="Enter email" />
-                                                                <small id="emailHelp" class="form-text text-muted">Your
-                                                                    information is safe with us.</small>
+                                                                <label for="usernameID"> User ID</label>
+                                                                <input type="usernameID" class="form-control"
+                                                                    id="usernameID" disabled />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="username">Username</label>
+                                                                <input type="username" class="form-control"
+                                                                    id="username" aria-describedby="usernameHelp" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="password1">Password</label>
                                                                 <input type="password" class="form-control"
-                                                                    id="password1" placeholder="Password" />
+                                                                    id="password1" />
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Confirm Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password2" placeholder="Confirm Password" />
-                                                            </div>
+
                                                         </div>
 
                                                         <div class="modal-footer">
@@ -363,7 +307,7 @@
                                                                 Close
                                                             </button>
                                                             <button type="button" class="btn btn-primary">
-                                                                Save changes
+                                                                Delete
                                                             </button>
                                                         </div>
                                                     </form>
@@ -381,31 +325,27 @@
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
-                                                        <h4 class="modal-title" id="myModalLabel">
-                                                            Modal title
-                                                        </h4>
+
                                                     </div>
 
                                                     <form>
                                                         <div class="modal-body">
                                                             <div class="form-group">
-                                                                <label for="email1">Email address</label>
-                                                                <input type="email" class="form-control" id="email1"
-                                                                    aria-describedby="emailHelp"
-                                                                    placeholder="Enter email" />
-                                                                <small id="emailHelp" class="form-text text-muted">Your
-                                                                    information is safe with us.</small>
+                                                                <label for="usernameID"> User ID</label>
+                                                                <input type="usernameID" class="form-control"
+                                                                    id="usernameID" disabled />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="username">Username</label>
+                                                                <input type="username" class="form-control"
+                                                                    id="username" aria-describedby="usernameHelp" />
                                                             </div>
                                                             <div class="form-group">
                                                                 <label for="password1">Password</label>
                                                                 <input type="password" class="form-control"
-                                                                    id="password1" placeholder="Password" />
+                                                                    id="password1" />
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Confirm Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password2" placeholder="Confirm Password" />
-                                                            </div>
+
                                                         </div>
 
                                                         <div class="modal-footer">
@@ -423,175 +363,7 @@
                                         </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>Jacob</td>
-                                    <td>Thornton</td>
-                                    <td>@fat</td>
-                                    <td>
-                                        <i class="fa fa-plus-circle" data-toggle="modal" data-target="#myModal"></i>
 
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog" role="form">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h4 class="modal-title" id="myModalLabel">
-                                                            Modal title
-                                                        </h4>
-                                                    </div>
-
-                                                    <form>
-                                                        <div class="modal-body">
-                                                            <div class="form-group">
-                                                                <label for="email1">Email address</label>
-                                                                <input type="email" class="form-control" id="email1"
-                                                                    aria-describedby="emailHelp"
-                                                                    placeholder="Enter email" />
-                                                                <small id="emailHelp" class="form-text text-muted">Your
-                                                                    information is safe with us.</small>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password1" placeholder="Password" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Confirm Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password2" placeholder="Confirm Password" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">
-                                                                Close
-                                                            </button>
-                                                            <button type="button" class="btn btn-primary">
-                                                                Save changes
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <i class="fa fa-trash" data-toggle="modal" data-target="#myModal"></i>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog" role="form">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h4 class="modal-title" id="myModalLabel">
-                                                            Modal title
-                                                        </h4>
-                                                    </div>
-
-                                                    <form>
-                                                        <div class="modal-body">
-                                                            <div class="form-group">
-                                                                <label for="email1">Email address</label>
-                                                                <input type="email" class="form-control" id="email1"
-                                                                    aria-describedby="emailHelp"
-                                                                    placeholder="Enter email" />
-                                                                <small id="emailHelp" class="form-text text-muted">Your
-                                                                    information is safe with us.</small>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password1" placeholder="Password" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Confirm Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password2" placeholder="Confirm Password" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">
-                                                                Close
-                                                            </button>
-                                                            <button type="button" class="btn btn-primary">
-                                                                Save changes
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <i class="fa fa-edit" data-toggle="modal" data-target="#myModal"></i>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-                                            aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog" role="form">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <button type="button" class="close" data-dismiss="modal"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        <h4 class="modal-title" id="myModalLabel">
-                                                            Modal title
-                                                        </h4>
-                                                    </div>
-
-                                                    <form>
-                                                        <div class="modal-body">
-                                                            <div class="form-group">
-                                                                <label for="email1">Email address</label>
-                                                                <input type="email" class="form-control" id="email1"
-                                                                    aria-describedby="emailHelp"
-                                                                    placeholder="Enter email" />
-                                                                <small id="emailHelp" class="form-text text-muted">Your
-                                                                    information is safe with us.</small>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password1" placeholder="Password" />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="password1">Confirm Password</label>
-                                                                <input type="password" class="form-control"
-                                                                    id="password2" placeholder="Confirm Password" />
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-default"
-                                                                data-dismiss="modal">
-                                                                Close
-                                                            </button>
-                                                            <button type="button" class="btn btn-primary">
-                                                                Save changes
-                                                            </button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th>3</th>
-                                    <td>Larry</td>
-                                    <td>the Bird</td>
-                                    <td>@twitter</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -650,6 +422,12 @@
     <script src="dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="dist/js/custom.min.js"></script>
+
+    <script>
+        let userLoginName = document.getElementById("userLoginName");
+        var username = localStorage.getItem("userName");
+        userLoginName.innerHTML = username;
+    </script>
 </body>
 
 </html>
