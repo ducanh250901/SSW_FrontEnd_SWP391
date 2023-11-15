@@ -1,14 +1,14 @@
 
-function addToCart(){
-    const product = JSON.parse(localStorage.getItem("productDataDetail")).data;
+function addToCart() {
+    const product = JSON.parse(localStorage.getItem("productDataDetail"));
     console.log(product);
     const cart = {
-      id: product.id,
-      name: product.name,
-      brand: product.brand,
-      price: product.price,
-      image: product.pictureLink,
-      quantity: Number(document.getElementById("quantity").value),
+        id: product.id,
+        name: product.name,
+        brand: product.brand,
+        price: product.price,
+        image: product.pictureLink,
+        quantity: Number(document.getElementById("quantity").value),
     };
     saveCart(cart);
 }

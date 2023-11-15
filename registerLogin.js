@@ -32,6 +32,12 @@ function decodeJWT(token) {
     return payload;
 }
 
+
+// Gọi hàm kiểm tra quyền truy cập khi trang admin được tải
+if (window.location.pathname.includes('/admin')) {
+    checkAdminAccess();
+}
+
 // Hàm kiểm tra quyền truy cập vào trang admin
 function checkAdminAccess() {
     const token = localStorage.getItem('token');
@@ -43,12 +49,12 @@ function checkAdminAccess() {
     }
 
     let user = decodeJWT(token);
-    if (!user || user.Role !== 'Admin' || user.Role !== 'Staff') {
+    // console.log(user.Role);
+    if (!user || (user.Role !== 'Admin' && user.Role !== 'Staff')) {
         window.location.href = '/index.html';
-        alert('You do not have access to admin page!');
+        alert('You do not have access to this page!');
     }
 }
-
 
 
 
@@ -115,20 +121,29 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
                 let user = decodeJWT(token);
                 console.log('user: >>>', user);
+                console.log(user.Role);
 
 
-                if (user.Role == "Admin") {
+                if (user.Role === "Admin") {
                     alert("Hello admin!");
                     window.location.href = "/admin/index.html";
-                } else if (user.Role == "Staff") {
+                } else if (user.Role === "Staff") {
                     alert("Hello Staff!");
                     window.location.href = "/admin/order-product.html";
                 } else {
-                    window.location.href = "/index.html"
+                    alert(`Welcome to my System\nCustomer: ${loginUsername}`)
+                    window.location.href = "/accountDetail.html"
                 }
 
                 // Gọi hàm kiểm tra quyền truy cập khi trang admin được tải
-                if (window.location.pathname === '/admin/index.html' || window.location.pathname === '/admin/order-product.html') {
+                const adminPages = [
+                    '/admin/index.html',
+                    '/admin/order-product.html',
+                    '/admin/order-service.html',
+                    '/admin/account-table.html'
+                ];
+
+                if (adminPages.includes(window.location.pathname)) {
                     checkAdminAccess();
                 }
 

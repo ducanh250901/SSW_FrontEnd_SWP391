@@ -18,7 +18,7 @@ cart.forEach((product, index) => {
   const cell5 = row.insertCell(4);
   const cell6 = row.insertCell(5);
 
-  cell1.innerHTML = `<img src="images/product_image.jpg" alt="Product Image" class="img-fluid">`;
+  cell1.innerHTML = `<img src="${product.image}" alt="${product.id}" class="img-fluid">`;
   cell2.textContent = product.name;
   cell3.textContent = product.price;
   cell4.textContent = product.quantity;

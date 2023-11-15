@@ -23,6 +23,7 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -96,8 +97,10 @@
                             <a class="nav-link" href="javascript:void(0)">
                                 <form>
                                     <div class="customize-input">
-                                        <input class="form-control custom-shadow custom-radius border-0 bg-white"
+                                        <input id="searchInput"
+                                            class="form-control custom-shadow custom-radius border-0 bg-white"
                                             type="search" placeholder="Search" aria-label="Search" />
+
                                         <i class="form-control-icon" data-feather="search"></i>
                                     </div>
                                 </form>
@@ -121,7 +124,7 @@
                                         class="svg-icon mr-2 ml-1"></i>
                                     My Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)"><i data-feather="power"
+                                <a class="dropdown-item" href="/logout.html"><i data-feather="power"
                                         class="svg-icon mr-2 ml-1"></i>
                                     Logout</a>
                                 <div class="dropdown-divider"></div>
@@ -159,12 +162,14 @@
                         <li class="nav-small-cap">
                             <span class="hide-menu">Application</span>
                         </li>
-                        <!-- <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i
-                                    data-feather="file-text" class="feather-icon">
-                                </i>
-                                <span class="hide-menu">Forms</span></a>
-                        </li> -->
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="account-table.html" aria-expanded="false"><i
+                                    data-feather="user" class="feather-icon"></i>
+                                <span class="hide-menu">Accounts
+                                </span></a>
+                        </li>
+
                         <li class="sidebar-item">
                             <a class="sidebar-link has-arrow" href="javascript:void(0)" aria-expanded="false"><i
                                     data-feather="grid" class="feather-icon"></i>
@@ -255,12 +260,12 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>Password</th>
+                                    <th>Role</th>
                                     <th>Status</th>
-                                    <th>Others</th>
                                 </tr>
                             </thead>
 
-                            <tbody>
+                            <tbody id="dataTable">
                                 <tr>
                                     <th>1</th>
                                     <td>Mark</td>
@@ -296,7 +301,7 @@
                                                             <div class="form-group">
                                                                 <label for="password1">Password</label>
                                                                 <input type="password" class="form-control"
-                                                                    id="password1" />
+                                                                    id="password" />
                                                             </div>
 
                                                         </div>
@@ -392,7 +397,7 @@
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
-            <!-- ============================================================== -->
+            teredData <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
         <!-- End Page wrapper  -->
@@ -415,7 +420,7 @@
     <script src="dist/js/feather.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
     <script src="assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <!-- <script src="assets/extra-libs/sparkline/sparkline.js"></script> -->
     <!--Wave Effects -->
     <!-- themejs -->
     <!--Menu sidebar -->
@@ -428,6 +433,116 @@
         var username = localStorage.getItem("userName");
         userLoginName.innerHTML = username;
     </script>
+
+
+
+    <script>
+
+        $(document).ready(function () {
+            loadData();
+
+            function loadData() {
+                const api = "https://localhost:7199/Account/GetAllAccount";
+                $.ajax({
+                    url: api,
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + localStorage.getItem("token"),
+                    },
+                    success: function (data) {
+                        data = data.data;
+                        console.log(data);
+                        let html = '';
+                        $.each(data, function (key, item) {
+                            html += `
+                    <tr data-id="${item.id}">
+                        <td>${item.id}</td>
+                        <td>${item.username}</td>
+                        <td>${item.password}</td>
+                        <td>${item.role === 1 ? 'Admin' : item.role === 2 ? 'Staff' : 'Customer'}</td>
+                        <td>
+                            <select class="status-select" data-current="${item.status}">
+                                <option value="0" ${item.status === 0 ? 'selected' : ''}>Active</option>
+                                <option value="1" ${item.status === 1 ? 'selected' : ''}>Deactive</option>
+                            </select>
+                            <button class="btn-confirm" style="display:none">Confirm</button>
+                            <button class="btn-cancel" style="display:none">Cancel</button>
+                        </td>
+                    </tr>`;
+                        });
+                        $("#dataTable").html(html);
+                    },
+                    error: function (error) {
+                        console.error("Error loading data:", error);
+                    }
+                });
+            }
+
+
+            $(document).on('change', '.status-select', function () {
+                var currentStatus = $(this).data('current');
+                var newStatus = $(this).val();
+                var $buttons = $(this).siblings('.btn-confirm, .btn-cancel');
+
+                if (currentStatus != newStatus) {
+                    $buttons.show();
+                } else {
+                    $buttons.hide();
+                }
+            });
+
+            $(document).on('click', '.btn-confirm', function () {
+                var id = $(this).closest('tr').data('id');
+                var newStatus = $(this).siblings('.status-select').val();
+
+                var api;
+                if (newStatus === '0') {
+                    api = `https://localhost:7199/Account/ActivateAccount/${id}`;
+                } else {
+                    api = `https://localhost:7199/Account/DeactivateAccount/${id}`;
+                }
+
+                $.ajax({
+                    url: api,
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: "Bearer " + localStorage.getItem("token"),
+                    },
+                    success: function (data) {
+                        if (data && data.success) {
+                            updateUI(id, newStatus);
+                            console.log("Update successful");
+                        } else {
+                            console.error("Update failed");
+                        }
+                    },
+                    error: function (error) {
+                        console.error("Error updating account:", error);
+                    }
+                });
+            });
+
+            $(document).on('click', '.btn-cancel', function () {
+                var id = $(this).siblings('.btn-confirm').siblings('.status-select').closest('tr').data('id');
+                var currentStatus = $(this).siblings('.btn-confirm').siblings('.status-select').data('current');
+
+                // Khôi phục giá trị ban đầu khi hủy
+                updateUI(id, currentStatus);
+
+                // Ẩn nút Confirm và Cancel
+                $(this).siblings('.btn-confirm, .btn-cancel').hide();
+            });
+
+            function updateUI(id, status) {
+                // Tìm phần tử HTML tương ứng với ID của tài khoản và cập nhật trạng thái
+                $(`#dataTable tr[data-id="${id}"] .status-select`).val(status);
+                $(`#dataTable tr[data-id="${id}"] .btn-confirm, #dataTable tr[data-id="${id}"] .btn-cancel`).hide();
+            }
+        });
+    </script>
+    <script src="/registerLogin.js"></script>
 </body>
 
 </html>

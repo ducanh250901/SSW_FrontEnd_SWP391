@@ -217,41 +217,41 @@
         <h2 class="h3 mb-3 text-black">Get In Touch</h2>
       </div>
 
-      <form method="get" id="myForm">
+      <form method="get" id="sendRquest">
         <div class="row">
           <div class="col-md-6">
             <div class="p-2 p-lg-4 border">
 
               <div class="form-group row">
-                <div class="col-md-12">
-                  <label for="c_type" class="text-black" id="c_type">Service Type:
+                <div class="col-md-6">
+                  <label for="c_type" class="text-black">Service Type:
                   </label>
-                  <span class="text-danger">*</span>
+                  <input type="text" class="form-control" id="c_type">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="c_price" class="text-black">Service Price:
+                  </label>
+                  <input type="text" class="form-control" id="c_price">
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-6">
-                  <label for="c_fname" class="text-black">Full Name <span class="text-danger">*</span></label>
+                  <label for="c_fname" class="text-black">Full Name<span class="text-danger">*</span></label>
                   <input type="text" class="form-control" id="c_fname" name="c_fname" required>
                 </div>
 
                 <div class="col-md-6">
-                  <label for="c_lname" class="text-black">Phone Number <span class="text-danger">*</span></label>
-                  <input type="number" class="form-control" id="c_lname" name="c_lname" required>
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class="col-md-12">
-                  <label for="c_email" class="text-black">Email <span class="text-danger">*</span></label>
-                  <input type="email" class="form-control" id="c_email" name="c_email" placeholder="" required>
+                  <label for="c_phone" class="text-black">Phone Number <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="c_phone" name="c_phone" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <label for="c_subject" class="text-black">Subject </label>
-                  <input type="text" class="form-control" id="c_subject" name="c_subject">
+                  <label for="c_quantiy" class="text-black">Quantity of shoes</label>
+                  <input type="number" class="form-control" id="c_quantiy" name="c_quantiy">
                 </div>
               </div>
 
@@ -272,7 +272,7 @@
               <div class="form-group row">
                 <div class="col-lg-12">
                   <button type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
-                    Send Message
+                    Send Request
                 </div>
               </div>
             </div>
@@ -355,7 +355,7 @@
             <div class="item">
               <div class="blog-entry">
                 <a href="#" class="block-20 d-flex align-items-start"
-                  style="background-image: url('images/image_1.jpg');">
+                  style="background-image: url('/images/image_1.jpg');">
                 </a>
               </div>
             </div>
@@ -363,7 +363,7 @@
             <div class="item">
               <div class="blog-entry">
                 <a href="#" class="block-20 d-flex align-items-start"
-                  style="background-image: url('images/image_1.jpg');">
+                  style="background-image: url('/images/image_1.jpg');">
                 </a>
               </div>
             </div>
@@ -463,7 +463,7 @@
   <script src="/js/main.js"></script>
   <script src="/welcomeName.js"></script>
   <script src="serviceDetail.js"></script>
-  <script src="sendMessage.js"></script>
+  <script src="sendRequestService.js"></script>
 
 </body>
 
