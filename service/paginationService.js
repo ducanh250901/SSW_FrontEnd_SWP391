@@ -77,11 +77,11 @@ function updatePagination(currentPage) {
 // Xử lý sự kiện khi người dùng chọn trang trước hoặc trang sau
 pagination.addEventListener('click', event => {
     if (event.target.tagName === 'A') {
-        if (event.target.textContent === '&lt;') {
+        if (event.target.textContent === '‹') { // Sửa giá trị để so sánh với dấu "‹"
             if (currentPage > 1) {
                 currentPage--;
             }
-        } else if (event.target.textContent === '&gt;') {
+        } else if (event.target.textContent === '›') { // Sửa giá trị để so sánh với dấu "›"
             const totalPages = Math.ceil(allProducts.length / itemsPerPage);
             if (currentPage < totalPages) {
                 currentPage++;

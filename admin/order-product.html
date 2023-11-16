@@ -260,10 +260,11 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>OrderId</th>
-                                    <th>AccountName</th>
-                                    <th>Status</th>
+                                    <th>Order ID</th>
+                                    <th>Account ID</th>
                                     <th>OrderDate</th>
+                                    <th>Products</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -335,13 +336,25 @@
                     let html = "";
                     let index = 1;
                     $.each(data.data, function (key, item) {
+                        // Tạo chuỗi HTML cho thông tin dịch vụ
+                        let productsHTML = "<td>";
+                        item.products.forEach(product => {
+                            productsHTML += `
+                        <div>
+                            Products ID: ${product.productId}<br>
+                            Quantity: ${product.quantity}<br>
+                        </div>
+                    `;
+                        });
+                        productsHTML += "</td>";
                         html += `
                         <tr>
                             <td>${index++}</td>
                             <td>${item.id}</td>
                             <td>${item.accountId}</td>
-                            <td>${showStatus(item.status)}</td>
                             <td>${formatDate(item.orderDate)}</td>
+                            ${productsHTML}
+                            <td>${showStatus(item.status)}</td>
                             <td>
                                 <a href="order-detail.html?id=${item.id
                             }" class="btn btn-primary">Detail</a>

@@ -126,7 +126,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
 
                 if (user.Role === "Admin") {
                     alert("Hello admin!");
-                    window.location.href = "/admin/index.html";
+                    window.location.href = "/admin/account-table.html";
                 } else if (user.Role === "Staff") {
                     alert("Hello Staff!");
                     window.location.href = "/admin/order-product.html";
