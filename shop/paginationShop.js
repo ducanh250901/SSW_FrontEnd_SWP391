@@ -28,7 +28,7 @@ function showProductsOnPage(page) {
         // Tạo phần tử DOM cho sản phẩm tương tự như trước
         const productElement = document.createElement('div');
         productElement.innerHTML = `
-        <div class=" col-lg-12 mb-4 ml-1 justify-content-between" data-aos="fade-up">
+        <div class="col-md-12 mb-4" data-aos="fade-up">
            <div class=" text-center ">
                <figure class="block-4-image">
                   <a href="productDetail.html?productID=${shop.id}">
