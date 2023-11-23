@@ -543,6 +543,14 @@
         });
     </script>
     <script src="/registerLogin.js"></script>
+
+    <script>
+        // check login
+        if (checkLogin() == false) {
+            alert("You are not logged in!");
+            window.location.href = "/login.html";
+        }
+    </script>
 </body>
 
 </html>
