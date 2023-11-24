@@ -1395,7 +1395,7 @@ a:hover {
 
 /* Ẩn dropdown content mặc định */
 .dropdown-content {
-  display: block;
+  display: none;
   position: absolute;
   background-color: #fff;
   text-align: start;
@@ -1420,13 +1420,13 @@ a:hover {
 
 /* Tùy chỉnh kiểu hiển thị của tùy chọn trong dropdown */
 .dropdown-content li {
-  display: block;
-  text-align: center;
+  /* display: block; */
+  /* text-align: left; */
   text-decoration: none;
   font-size: medium;
   font-weight: 600;
   /* display: block; */
-  width: auto;
+  width: 170px;
   color: #000000;
 }
 

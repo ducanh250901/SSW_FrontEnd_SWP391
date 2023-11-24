@@ -33,10 +33,10 @@
           <div class="row align-items-center">
 
             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-              <form action="" class="site-block-top-search">
+              <!-- <form action="" class="site-block-top-search">
                 <span class="icon icon-search2"></span>
                 <input type="text" class="form-control border-0" placeholder="Search...">
-              </form>
+              </form> -->
             </div>
 
             <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
@@ -60,9 +60,12 @@
                   <li class="dropdown">
                     <a href="/login.html"><span class="icon icon-person"></span></a>
                     <ul class="dropdown-content">
-                      <li><span class="icon-sign-out"></span><a href="/logout.html">Logout</a></li>
-                      <li><span class="icon-shopping-basket"></span><a href="/viewStatusOrder.html">View
-                          status order</a>
+                      <li><span class="icon-sign-out" style="margin-right: 9px;"></span>
+                        <a href="/logout.html">Logout</a>
+                      </li>
+                      <li><span class="icon-shopping-basket">
+                        </span><a href="/viewStatusOrder.html">
+                          View status order</a>
                       </li>
                     </ul>
                   </li>
@@ -119,23 +122,24 @@
 
     <div class="site-section">
       <div class="container">
-        <div class="row">
-          <div class="col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-md-12 text-center">
             <h2 class="h3 mb-3 text-black">Get In Touch</h2>
           </div>
-          <div class="col-md-7">
+
+          <div class="col-md-7 ">
 
             <form action="#" method="post">
 
               <div class="p-3 p-lg-5 border">
                 <div class="form-group row">
                   <div class="col-md-6">
-                    <label for="c_fname" class="text-black">First Name <span class="text-danger">*</span></label>
+                    <label for="c_fname" class="text-black">Full Name <span class="text-danger">*</span></label>
                     <input type="text" class="form-control" id="c_fname" name="c_fname">
                   </div>
                   <div class="col-md-6">
-                    <label for="c_lname" class="text-black">Last Name <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" id="c_lname" name="c_lname">
+                    <label for="c_phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="c_phone" name="c_phone">
                   </div>
                 </div>
                 <div class="form-group row">
@@ -165,7 +169,7 @@
               </div>
             </form>
           </div>
-          <div class="col-md-5 ml-auto">
+          <!-- <div class="col-md-5 ml-auto">
             <div class="p-4 border mb-3">
               <span class="d-block text-primary h6 text-uppercase">New York</span>
               <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
@@ -179,7 +183,7 @@
               <p class="mb-0">203 Fake St. Mountain View, San Francisco, California, USA</p>
             </div>
 
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
