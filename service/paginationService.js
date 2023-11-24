@@ -29,16 +29,16 @@ function showProductsOnPage(page) {
         const productElement = document.createElement('div');
         productElement.innerHTML = `
         <div class=" col-lg-12 mb-4" data-aos="fade-up">
-        <div class=" text-center ">
+        <div class="border-4 text-center ">
           <figure class="block-4-image">
             <a href="sendService.html?serviceID=${service.id}">
-            <img src="${service.pictureLink}" 
-              alt="${service.pictureLink}" class="img-product"></a>
+            <img src="https://media.istockphoto.com/id/162275552/tr/vekt%C3%B6r/seamless-pattern-shoe-polish-and-man-shoe.jpg?b=1&s=612x612&w=0&k=20&c=46EhTpsgs_kxLgm2yuO3QZ3z2Mody_FnmTnobAmwa5Q=" 
+              alt="${service.id}" class="img-product"></a>
           </figure>
             <div class="product-infor">
-            <h5><a href="sendService.html?serviceID=${service.id}">
+            <h5 class='font-weight-bold'><a href="sendService.html?serviceID=${service.id}">
               ${service.type}</a></h5>               
-              <p class="text-primary font-weight-bold">${service.price}</p>
+              <p class="text-primary font-weight-bold">$ ${service.price}</p>
             </div>
         </div>
     </div>

@@ -1395,7 +1395,7 @@ a:hover {
 
 /* Ẩn dropdown content mặc định */
 .dropdown-content {
-  display: none;
+  display: block;
   position: absolute;
   background-color: #fff;
   min-width: 100px;
@@ -1410,17 +1410,17 @@ a:hover {
   transform: translateX(-50%);
   /* Dịch chuyển vị trí ngang để căn giữa */
 
-
 }
 
 /* Hiển thị dropdown content khi hover trên dropdown */
 .dropdown:hover .dropdown-content {
-  display: block;
+  display: inline-block;
 }
 
 /* Tùy chỉnh kiểu hiển thị của tùy chọn trong dropdown */
 .dropdown-content li {
-  /* padding: 5px; */
+  display: flex;
+  padding: 5px;
   text-align: center;
   text-decoration: none;
   font-size: medium;
@@ -1428,6 +1428,12 @@ a:hover {
   /* display: block; */
   width: 100%;
   color: #000000;
+}
+
+
+.dropdown-content li span {
+  margin-right: 8px;
+  /* Adjust the margin between icon and text */
 }
 
 /* Đổi màu chữ và nền của tùy chọn khi hover */

@@ -38,9 +38,8 @@ function showProductsOnPage(page) {
                     <div class="product-infor">
                         <h5><a href="productDetail.html?productID=${shop.id}">
                         ${shop.name}</a></h5>
-                        <p class="mb-0">${shop.catagories}</p>
-                        <p class="mb-0">${shop.brand}</p>
-                        <p class="text-primary font-weight-bold">${shop.price}</p>
+                        <p class="mb-0 font-weight-bold">${shop.brand}</p>
+                        <p class="text-primary font-weight-bold">$ ${shop.price}</p>
                         </div>
                       </div>
                   </div>
