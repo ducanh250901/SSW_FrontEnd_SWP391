@@ -1425,8 +1425,7 @@ a:hover {
   text-decoration: none;
   font-size: medium;
   font-weight: 600;
-  /* display: block; */
-  width: 170px;
+  min-width: 170px;
   color: #000000;
 }
 

@@ -1,6 +1,6 @@
 // Khai báo biến
 let currentPage = 1;
-const itemsPerPage = 3; // Số sản phẩm trên mỗi trang
+const itemsPerPage = 4; // Số sản phẩm trên mỗi trang
 const pagination = document.getElementById('pagination');
 const product = document.getElementById('product-list');
 let allProducts = []; // Lưu trữ tất cả sản phẩm từ API
@@ -28,15 +28,15 @@ function showProductsOnPage(page) {
         // Tạo phần tử DOM cho sản phẩm tương tự như trước
         const productElement = document.createElement('div');
         productElement.innerHTML = `
-        <div class=" col-lg-12 mb-4" data-aos="fade-up">
+        <div class=" col-12 mb-4" data-aos="fade-up">
         <div class="border-4 text-center ">
-          <figure class="block-4-image">
+          <figure class="block-4-image border">
             <a href="sendService.html?serviceID=${service.id}">
             <img src="https://media.istockphoto.com/id/162275552/tr/vekt%C3%B6r/seamless-pattern-shoe-polish-and-man-shoe.jpg?b=1&s=612x612&w=0&k=20&c=46EhTpsgs_kxLgm2yuO3QZ3z2Mody_FnmTnobAmwa5Q=" 
               alt="${service.id}" class="img-product"></a>
           </figure>
             <div class="product-infor">
-            <h5 class='font-weight-bold'><a href="sendService.html?serviceID=${service.id}">
+            <h5 class='font-weight-bold' style="color: rgb(129, 124, 124)";><a href="sendService.html?serviceID=${service.id}">
               ${service.type}</a></h5>               
               <p class="text-primary font-weight-bold">$ ${service.price}</p>
             </div>
@@ -76,20 +76,25 @@ function updatePagination(currentPage) {
 
 // Xử lý sự kiện khi người dùng chọn trang trước hoặc trang sau
 pagination.addEventListener('click', event => {
+    event.preventDefault(); // Prevent the default behavior of anchor tags
+
+    console.log('Clicked:', event.target.textContent);
+
     if (event.target.tagName === 'A') {
-        if (event.target.textContent === '‹') { // Sửa giá trị để so sánh với dấu "‹"
-            if (currentPage > 1) {
-                currentPage--;
-            }
-        } else if (event.target.textContent === '›') { // Sửa giá trị để so sánh với dấu "›"
-            const totalPages = Math.ceil(allProducts.length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-            }
+        const totalPages = Math.ceil(allProducts.length / itemsPerPage);
+
+        if (event.target.textContent === '<' && currentPage > 1) {
+            currentPage--;
+        } else if (event.target.textContent === '>' && currentPage < totalPages) {
+            currentPage++;
         } else {
-            currentPage = parseInt(event.target.textContent);
+            const pageNumber = parseInt(event.target.textContent);
+            if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
+                currentPage = pageNumber;
+            }
         }
 
+        console.log('New Current Page:', currentPage);
         showProductsOnPage(currentPage);
     }
 });

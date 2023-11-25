@@ -1,6 +1,6 @@
 // Khai báo biến
 let currentPage = 1;
-const itemsPerPage = 3; // Số sản phẩm trên mỗi trang
+const itemsPerPage = 8; // Số sản phẩm trên mỗi trang
 const pagination = document.getElementById('pagination');
 const product = document.getElementById('product-list');
 let allProducts = []; // Lưu trữ tất cả sản phẩm từ API
@@ -30,7 +30,7 @@ function showProductsOnPage(page) {
         productElement.innerHTML = `
         <div class="col-md-12 mb-4" data-aos="fade-up">
            <div class=" text-center ">
-               <figure class="block-4-image">
+               <figure class="block-4-image border">
                   <a href="productDetail.html?productID=${shop.id}">
                    <img src="${shop.pictureLink}" 
                     alt="${shop.pictureLink}" class="img-product"></a>
@@ -77,20 +77,25 @@ function updatePagination(currentPage) {
 
 // Xử lý sự kiện khi người dùng chọn trang trước hoặc trang sau
 pagination.addEventListener('click', event => {
+    event.preventDefault(); // Prevent the default behavior of anchor tags
+
+    console.log('Clicked:', event.target.textContent);
+
     if (event.target.tagName === 'A') {
-        if (event.target.textContent === '&lt;') {
-            if (currentPage > 1) {
-                currentPage--;
-            }
-        } else if (event.target.textContent === '&gt;') {
-            const totalPages = Math.ceil(allProducts.length / itemsPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-            }
+        const totalPages = Math.ceil(allProducts.length / itemsPerPage);
+
+        if (event.target.textContent === '<' && currentPage > 1) {
+            currentPage--;
+        } else if (event.target.textContent === '>' && currentPage < totalPages) {
+            currentPage++;
         } else {
-            currentPage = parseInt(event.target.textContent);
+            const pageNumber = parseInt(event.target.textContent);
+            if (!isNaN(pageNumber) && pageNumber >= 1 && pageNumber <= totalPages) {
+                currentPage = pageNumber;
+            }
         }
 
+        console.log('New Current Page:', currentPage);
         showProductsOnPage(currentPage);
     }
 });
