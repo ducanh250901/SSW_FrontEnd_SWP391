@@ -17,6 +17,15 @@ let user = decodeJWT(token)
 console.log('user: >>>', user);
 console.log('accountID: >>>', user.AccountID);
 
+const fullName = localStorage.getItem("fullName");
+const phone = localStorage.getItem("phone");
+const address = localStorage.getItem('address')
+
+if (fullName && phone && address) {
+    window.location.href = "/index.html";
+} else {
+
+}
 
 document.getElementById("infor_id").value = user.AccountID;
 
@@ -32,6 +41,8 @@ document.getElementById("accountDetailForm").addEventListener("submit", function
     localStorage.setItem("phone", phone);
 
     var address = document.getElementById("infor_address").value;
+
+    localStorage.setItem('address', address);
     // Trong phần xác định giới tính
     var gender = document.querySelector('input[name="gender"]:checked');
     var selectedGender = gender ? (gender.value === "male") : null;
@@ -68,6 +79,7 @@ document.getElementById("accountDetailForm").addEventListener("submit", function
         .then((data) => {
             if (data.status === true) {
                 alert("Account details saved successfully!");
+                window.location.href = "/index.html";
                 // Có thể thêm các xử lý khác sau khi lưu thành công
             } else {
                 alert("Failed to save account details.\n" + data.message);
