@@ -24,66 +24,66 @@ const address = localStorage.getItem('address')
 if (fullName && phone && address) {
     window.location.href = "/index.html";
 } else {
+    document.getElementById("infor_id").value = user.AccountID;
 
-}
+    document.getElementById("accountDetailForm").addEventListener("submit", function (e) {
+        e.preventDefault();
 
-document.getElementById("infor_id").value = user.AccountID;
+        var accountId = document.getElementById("infor_id").value;
+        var fullName = document.getElementById("infor_name").value;
 
-document.getElementById("accountDetailForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+        var phone = document.getElementById("infor_phone").value;
+        // Lưu thông tin vào localStorage
+        localStorage.setItem("fullName", fullName);
+        localStorage.setItem("phone", phone);
 
-    var accountId = document.getElementById("infor_id").value;
-    var fullName = document.getElementById("infor_name").value;
+        var address = document.getElementById("infor_address").value;
 
-    var phone = document.getElementById("infor_phone").value;
-    // Lưu thông tin vào localStorage
-    localStorage.setItem("fullName", fullName);
-    localStorage.setItem("phone", phone);
+        localStorage.setItem('address', address);
+        // Trong phần xác định giới tính
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var selectedGender = gender ? (gender.value === "male") : null;
 
-    var address = document.getElementById("infor_address").value;
+        localStorage.setItem('gender', selectedGender)
+        // Lấy giá trị các trường khác tương tự
 
-    localStorage.setItem('address', address);
-    // Trong phần xác định giới tính
-    var gender = document.querySelector('input[name="gender"]:checked');
-    var selectedGender = gender ? (gender.value === "male") : null;
-
-
-    // Lấy giá trị các trường khác tương tự
-
-    const apiUrl = "https://localhost:7199/AccountDetail/AddAccountDetail";
-    console.log('Data sent to server:', JSON.stringify({
-        accountId: accountId,
-        fullname: fullName,
-        address: address,
-        phone: phone,
-        gender: selectedGender,
-    }));
-
-
-    fetch(apiUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Authorization": "Bearer " + token,
-        },
-        body: JSON.stringify({
+        const apiUrl = "https://localhost:7199/AccountDetail/AddAccountDetail";
+        console.log('Data sent to server:', JSON.stringify({
             accountId: accountId,
             fullname: fullName,
             address: address,
             phone: phone,
-            gender: selectedGender
-        })
+            gender: selectedGender,
+        }));
 
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            if (data.status === true) {
-                alert("Account details saved successfully!");
-                window.location.href = "/index.html";
-                // Có thể thêm các xử lý khác sau khi lưu thành công
-            } else {
-                alert("Failed to save account details.\n" + data.message);
-            }
-        });
-});
+
+        fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": "Bearer " + token,
+            },
+            body: JSON.stringify({
+                accountId: accountId,
+                fullname: fullName,
+                address: address,
+                phone: phone,
+                gender: selectedGender
+            })
+
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                if (data.status === true) {
+                    alert("Account details saved successfully!");
+                    window.location.href = "/index.html";
+                    // Có thể thêm các xử lý khác sau khi lưu thành công
+                } else {
+                    alert("Failed to save account details.\n" + data.message);
+                }
+            });
+    });
+}
+
+
 
