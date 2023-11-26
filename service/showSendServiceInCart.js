@@ -24,7 +24,7 @@ if (cartDataService) {
         cell4.textContent = serviceData.deliveryOption;
         cell5.textContent = serviceData.message;
         cell6.innerHTML = `
-  <div class="input-group mb-3" style="max-width: 120px;">
+  <div class="input-group mb-3 " style="max-width: 120px;">
     <div class="input-group-prepend">
       <button class="btn btn-outline-primary js-btn-minus" onclick="updateQuantity(${index}, -1)" type="button">&minus;</button>
     </div>
