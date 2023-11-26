@@ -21,7 +21,16 @@ cart.forEach((product, index) => {
   cell1.innerHTML = `<img src="${product.image}" alt="${product.id}" class="img-fluid">`;
   cell2.textContent = product.name;
   cell3.textContent = product.price;
-  cell4.textContent = product.quantity;
+  cell4.innerHTML = `
+  <div class="input-group ml-5" style="max-width: 110px;">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-primary js-btn-minus" onclick="updateQuantity(${index}, -1)" type="button">&minus;</button>
+    </div>
+    <input type="text" class="form-control text-center" value="${product.quantity}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" id="quantity-${index}">
+    <div class="input-group-append">
+      <button class="btn btn-outline-primary js-btn-plus" onclick="updateQuantity(${index}, 1)" type="button">&plus;</button>
+    </div>
+  </div>`;
   cell5.textContent = product.price * product.quantity;
   cell6.innerHTML = `<button class="btn btn-primary btn-sm" 
   onclick="removeProduct(event, ${index})">X</button>`;
@@ -33,6 +42,23 @@ function removeProduct(event, index) {
   localStorage.setItem('cart', JSON.stringify(cart));
   const row = event.target.parentNode.parentNode; // Xác định hàng cần xóa
   row.remove(); // Loại bỏ hàng khỏi bảng
+}
+
+function updateQuantity(index, change) {
+  const inputQuantity = document.getElementById(`quantity-${index}`);
+  let newQuantity = parseInt(inputQuantity.value) + change;
+
+  if (newQuantity < 1) {
+    newQuantity = 1;
+  }
+
+  cart[index].quantity = newQuantity;
+  localStorage.setItem('cart', JSON.stringify(cart));
+
+  // Cập nhật giá trị trong bảng
+  const row = inputQuantity.closest('tr');
+  row.cells[3].textContent = newQuantity;  // Cập nhật cell4 với giá trị mới
+  row.cells[5].textContent = cart[index].price * newQuantity;  // Cập nhật cell5 với giá trị mới
 }
 
 
