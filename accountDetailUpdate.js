@@ -58,7 +58,7 @@ document.getElementById("accountDetailUpdateForm").addEventListener("submit", fu
     localStorage.setItem('gender', selectedGender)
     // Lấy giá trị các trường khác tương tự
 
-    const apiUrl = "https://localhost:7199/AccountDetail/UpdateAccountDetail/${}";
+    const apiUrl = "https://localhost:7199/AccountDetail/UpdateAccountDetail";
     console.log('Data sent to server:', JSON.stringify({
         accountId: accountId,
         fullname: fullName,

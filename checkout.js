@@ -7,60 +7,66 @@ function loadCheckout() {
     // Load Order Product
     const orderProduct = JSON.parse(localStorage.getItem("cart"));
     console.log('cart: >>>', orderProduct);
-    let dataOrderProduct = document.getElementById("dataOrderProduct");
-    let orderProductTotalElement = document.getElementById("orderProductTotal");
     let totalProduct = 0;
-    let htmlProduct = "";
 
-    orderProduct.forEach((item, index) => {
-        totalProduct += item.price * item.quantity;
-        htmlProduct += `
-        <tr>
-          <td>${item.name} <strong class="mx-2">x</strong> ${item.quantity
-            } - $${item.price} </td>
-          <td>$${item.price * item.quantity}</td>
-        </tr>
-      `;
-    });
+    if (orderProduct) {
+        let dataOrderProduct = document.getElementById("dataOrderProduct");
+        let orderProductTotalElement = document.getElementById("orderProductTotal");
+        let htmlProduct = "";
 
-    htmlProduct += `
-      <td class="text-black font-weight-bold"><strong>Order Product Total</strong></td>
-      <td class="text-black font-weight-bold"><strong>$${totalProduct.toFixed(2)}</strong></td>
-    `;
+        orderProduct.forEach((item, index) => {
+            totalProduct += item.price * item.quantity;
+            htmlProduct += `
+            <tr>
+              <td>${item.name} <strong class="mx-2">x</strong> ${item.quantity
+                } - $${item.price} </td>
+              <td>$${item.price * item.quantity}</td>
+            </tr>
+          `;
+        });
 
-    dataOrderProduct.innerHTML = htmlProduct;
-    orderProductTotalElement.textContent = `$${totalProduct.toFixed(2)}`;
+        dataOrderProduct.innerHTML = htmlProduct;
+        orderProductTotalElement.textContent = `$${totalProduct.toFixed(2)}`;
+    }
+
 
     // Load Order Service
     const orderService = JSON.parse(localStorage.getItem("cartDataService"));
     console.log('cart service: >>>>', orderService);
-    let dataOrderService = document.getElementById("dataOrderService");
-    let orderServiceTotalElement = document.getElementById("orderServiceTotal");
     let totalService = 0;
-    let htmlService = "";
 
-    orderService.forEach((item, index) => {
-        totalService += item.servicePrice * item.quantity;
-        htmlService += `
-        <tr>
-          <td>${item.serviceType} <strong class="mx-2">x</strong> ${item.quantity
-            } - $${item.servicePrice} </td>
-          <td>$${item.servicePrice * item.quantity}</td>
-        </tr>
-      `;
-    });
+    if (orderService) {
+        let dataOrderService = document.getElementById("dataOrderService");
+        let orderServiceTotalElement = document.getElementById("orderServiceTotal");
+        let htmlService = "";
 
-    htmlService += `
-      <td class="text-black font-weight-bold"><strong>Order Service Total</strong></td>
-      <td class="text-black font-weight-bold"><strong>$${totalService.toFixed(2)}</strong></td>
-    `;
+        orderService.forEach((item, index) => {
+            totalService += item.servicePrice * item.quantity;
+            htmlService += `
+            <tr>
+              <td>${item.serviceType} <strong class="mx-2">x</strong> ${item.quantity
+                } - $${item.servicePrice} </td>
+              <td>$${item.servicePrice * item.quantity}</td>
+            </tr>
+          `;
+        });
 
-    dataOrderService.innerHTML = htmlService;
-    orderServiceTotalElement.textContent = `$${totalService.toFixed(2)}`;
+        dataOrderService.innerHTML = htmlService;
+        orderServiceTotalElement.textContent = `$${totalService.toFixed(2)}`;
+    }
+
 
     // Load Grand Total
     const grandTotalElement = document.getElementById("grandTotal");
-    const grandTotal = totalProduct + totalService;
+    let grandTotal = 0;
+    if (totalProduct && totalService) {
+        grandTotal = totalProduct + totalService;
+    } else if (totalProduct = 0) {
+        grandTotal = totalService
+    } else {
+        grandTotal = totalProduct
+    }
+
     grandTotalElement.textContent = `$${grandTotal.toFixed(2)}`;
 }
 

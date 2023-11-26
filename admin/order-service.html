@@ -260,10 +260,9 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Order ID</th>
-                                    <th>Account ID</th>
+                                    <th>Name</th>
+                                    <th>Type Service</th>
                                     <th>Order Date</th>
-                                    <th>Services</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -340,7 +339,7 @@
                         item.services.forEach(service => {
                             servicesHTML += `
                         <div>
-                            Service ID: ${service.serviceId}<br>
+                            Service ID: ${service.service.type}<br>
                             Quantity: ${service.quantity}<br>
                         </div>
                     `;
@@ -349,11 +348,10 @@
                         html += `
                         <tr>
                             <td>${index++}</td>
-                            <td>${item.id}</td>
-                            <td>${item.accountId}</td>
+                            <td>${item.account.username}</td>
                            ${servicesHTML}
-                            <td>${showStatus(item.status)}</td>
                             <td>${formatDate(item.orderDate)}</td>
+                            <td>${showStatus(item.status)}</td>
                             <td>
                                 <a href="order-detail.html?id=${item.id
                             }" class="btn btn-primary">Detail</a>
@@ -378,7 +376,8 @@
         function formatDate(date) {
             const d = new Date(date);
             return `${d.getDate()}/${d.getMonth() + 1
-                }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+                }/${d.getFullYear()}</br> 
+                ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
         }
         function showStatus(status) {
             switch (status) {

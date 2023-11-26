@@ -323,7 +323,7 @@
         });
 
         function loadData() {
-            const api = "https://localhost:7199/Order/GetAllOrder";
+            const api = "https://localhost:7199/Order/GetAllProductOrder";
             $.ajax({
                 url: api,
                 method: "GET",
@@ -378,8 +378,8 @@
         // Cancelled
         function formatDate(date) {
             const d = new Date(date);
-            return `${d.getDate()}/${d.getMonth() + 1
-                }/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
+            return `${d.getDate()}/${d.getMonth() + 1}</br>
+            ${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}:${d.getSeconds()}`;
         }
         function showStatus(status) {
             switch (status) {

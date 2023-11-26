@@ -56,7 +56,12 @@ if (user && user.Role === 'Customer') {
             <br>
             ${orderDate.getHours()} :${orderDate.getMinutes()}:${orderDate.getSeconds()}</td>
             <td>${order.total}</td>
-            <td>${order.status === 1 ? 'Deliveried' : 'Pending'}</td>
+            <td>${order.status === 0 ? 'Pending' :
+                    order.status === 1 ? 'Processing' :
+                        order.status === 2 ? 'Delivering' :
+                            order.status === 3 ? 'Delivered' :
+                                "Cancelled"
+                }</td>
         `;
 
             // Thêm hàng vào tbody
