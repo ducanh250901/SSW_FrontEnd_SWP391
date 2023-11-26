@@ -17,11 +17,13 @@ cart.forEach((product, index) => {
   const cell4 = row.insertCell(3);
   const cell5 = row.insertCell(4);
   const cell6 = row.insertCell(5);
+  const cell7 = row.insertCell(6);
 
   cell1.innerHTML = `<img src="${product.image}" alt="${product.id}" class="img-fluid">`;
   cell2.textContent = product.name;
   cell3.textContent = product.price;
-  cell4.innerHTML = `
+  cell4.textContent = product.size;
+  cell5.innerHTML = `
   <div class="input-group ml-5" style="max-width: 110px;">
     <div class="input-group-prepend">
       <button class="btn btn-outline-primary js-btn-minus" onclick="updateQuantity(${index}, -1)" type="button">&minus;</button>
@@ -31,8 +33,8 @@ cart.forEach((product, index) => {
       <button class="btn btn-outline-primary js-btn-plus" onclick="updateQuantity(${index}, 1)" type="button">&plus;</button>
     </div>
   </div>`;
-  cell5.textContent = product.price * product.quantity;
-  cell6.innerHTML = `<button class="btn btn-primary btn-sm" 
+  cell6.textContent = product.price * product.quantity;
+  cell7.innerHTML = `<button class="btn btn-primary btn-sm" 
   onclick="removeProduct(event, ${index})">X</button>`;
 });
 
