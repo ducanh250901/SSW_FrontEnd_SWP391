@@ -295,6 +295,10 @@
                                                 <input type="number" class="form-control" id="price" name="price"
                                                     required>
                                             </div>
+                                            <div class="form-group">
+                                                <label for="image">Image:</label>
+                                                <img id="image" src="" alt="Product Image" class="img-fluid">
+                                            </div>
                                             <!-- Add more input fields as needed -->
 
                                             <!-- Hidden input to store product ID -->
@@ -431,6 +435,9 @@
                         // Set the product ID in a hidden input
                         $('#updateProductForm #productId').val(productId);
 
+                        // Set the image source
+                        $('#updateProductForm #image').attr('src', data.data.pictureLink);
+
                         // Show the modal
                         $('#productModal').modal('show');
                     } else {
@@ -471,6 +478,8 @@
                 brand: $('#updateProductForm #brand').val(),
                 name: $('#updateProductForm #name').val(),
                 price: $('#updateProductForm #price').val(),
+                image: $('#updateProductForm #productImage').attr('src'),
+
             };
 
             const api = `https://localhost:7199/Product/UpdateProduct/${productId}`;
