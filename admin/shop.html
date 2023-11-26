@@ -280,6 +280,26 @@
                                     </div>
                                     <div class="modal-body" id="modalBody">
                                         <!-- Product details will be displayed here -->
+                                        <form id="updateProductForm">
+                                            <div class="form-group">
+                                                <label for="brand">Brand:</label>
+                                                <input type="text" class="form-control" id="brand" name="brand"
+                                                    required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="name">Name:</label>
+                                                <input type="text" class="form-control" id="name" name="name" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="price">Price:</label>
+                                                <input type="number" class="form-control" id="price" name="price"
+                                                    required>
+                                            </div>
+                                            <!-- Add more input fields as needed -->
+
+                                            <!-- Hidden input to store product ID -->
+                                            <input type="hidden" id="productId" name="productId">
+                                        </form>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" id="deleteBtn">Delete
@@ -380,9 +400,9 @@
                             <td>${item.brand}</td>
                             <td>${item.name}</td>
                             <td>$ ${item.price}</td>
+                            <td><button class="btn btn-info detailBtn"  data-productid="${item.id}">Detail</button></td>
                         `;
                     });
-                    $('tbody tr').append('<td><button class="btn btn-info detailBtn">Detail</button></td>');
                     $("#dataTable").html(html);
                 },
                 error: function (err) {
@@ -393,17 +413,18 @@
 
         function showProductDetails(productId) {
             // Fetch product details using productId
-            const api = `https://localhost:7199/Product/GetProduct/${productId}`;
+            const api = `https://localhost:7199/Product/GetProductById/${productId}`;
             $.ajax({
                 url: api,
                 type: 'GET',
                 success: function (data) {
                     // Populate modal with product details
                     $('#modalBody').html(`
-                <p>ID: ${data.id}</p>
-                <p>Brand: ${data.brand}</p>
-                <p>Name: ${data.name}</p>
-                <p>Price: ${data.price}</p>
+                <p>ID: ${data.data.id}</p>
+                <p>Brand: ${data.data.brand}</p>
+                <p>Name: ${data.data.name}</p>
+                <p>Price: ${data.data.price}</p>
+                <p>Image: ${data.data.pictureLink}</p>
             `);
                     $('#modalBody').data('productid', productId);
                     // Show the modal
@@ -433,7 +454,7 @@
         }
 
         function updateProduct(productId) {
-            const api = `https://localhost:7199/Product/UpdateProduct`;
+            const api = `https://localhost:7199/Product/UpdateProduct/${productId}`;
             // Implement your logic to update the product
             // ...
             // After updating, close the modal and refresh the data
