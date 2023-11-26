@@ -365,6 +365,7 @@
             // Set up click event for "Detail" buttons
             $('#dataTable').on('click', '.detailBtn', function () {
                 const productId = $(this).data('productid');
+                $('#modalBody').data('productid', productId);  // Set the data-productid attribute
                 showProductDetails(productId);
             });
 
@@ -418,17 +419,23 @@
                 url: api,
                 type: 'GET',
                 success: function (data) {
-                    // Populate modal with product details
-                    $('#modalBody').html(`
-                <p>ID: ${data.data.id}</p>
-                <p>Brand: ${data.data.brand}</p>
-                <p>Name: ${data.data.name}</p>
-                <p>Price: ${data.data.price}</p>
-                <p>Image: ${data.data.pictureLink}</p>
-            `);
-                    $('#modalBody').data('productid', productId);
-                    // Show the modal
-                    $('#productModal').modal('show');
+                    if (data && data.data) {
+                        console.log('data: >>>', data.data);
+
+                        // let productId = data.data.id
+
+                        // Populate modal with product details
+                        $('#updateProductForm #brand').val(data.data.brand);
+                        $('#updateProductForm #name').val(data.data.name);
+                        $('#updateProductForm #price').val(data.data.price);
+                        // Set the product ID in a hidden input
+                        $('#updateProductForm #productId').val(productId);
+
+                        // Show the modal
+                        $('#productModal').modal('show');
+                    } else {
+                        console.log('Invalid response format');
+                    }
                 },
                 error: function (err) {
                     console.log(err);
@@ -436,7 +443,8 @@
             });
         }
 
-        function deleteProduct(productId) {
+        function deleteProduct() {
+            const productId = $('#modalBody').data('productid');
             const api = `https://localhost:7199/Product/DeleteProduct/${productId}`;
             $.ajax({
                 url: api,
@@ -453,56 +461,41 @@
             });
         }
 
-        function updateProduct(productId) {
+        function updateProduct() {
+            const productId = $('#modalBody').data('productid');
+            console.log('productId:', productId);
+            // Assuming you have a form with id 'updateProductForm' containing the updated data
+            const updatedData = {
+                // Retrieve updated data from your form
+                // Example:
+                brand: $('#updateProductForm #brand').val(),
+                name: $('#updateProductForm #name').val(),
+                price: $('#updateProductForm #price').val(),
+            };
+
             const api = `https://localhost:7199/Product/UpdateProduct/${productId}`;
-            // Implement your logic to update the product
-            // ...
-            // After updating, close the modal and refresh the data
-            $('#productModal').modal('hide');
-            loadData();
+            $.ajax({
+                url: api,
+                type: 'PUT',  // Assuming you use PUT method for updates, adjust if needed
+                contentType: 'application/json',
+                data: JSON.stringify(updatedData),
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('token'),
+                },
+                success: function () {
+                    // Close the modal
+                    $('#productModal').modal('hide');
+                    // Refresh the data
+                    loadData();
+                },
+                error: function (err) {
+                    console.log(err);
+                    // Handle errors appropriately
+                },
+            })
         }
 
     </script>
-
-    <!-- <script>
-
-        $(document).ready(function () {
-            const dataTable = $('#dataTable');
-
-            const apiUrl = 'https://localhost:7199/shop/GetAllshop';
-
-            $.ajax({
-                url: apiUrl,
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    console.log('data:', data);
-
-                    dataTable.empty();
-
-                    data.data.forEach(shop => {
-                        const row = $('<tr></tr>');
-                        row.html(`
-                            <td>${shop.id}</td>
-                            <td>${shop.brand}</td>
-                            <td>${shop.name}</td>
-                            <td>${shop.price}</td>
-                            <td><button onclick="viewDetails('${shop.id}')">View Details</button></td>
-                        `);
-                        dataTable.append(row);
-                    });
-                },
-                error: function (error) {
-                    console.error('Error fetching data:', error);
-                }
-            });
-        });
-
-        function viewDetails(shopId) {
-            // You can implement this function to show more details about the shop
-            console.log('View details for shop ID:', shopId);
-        }
-    </script> -->
 
     <script>
         let userLoginName = document.getElementById("userLoginName");
