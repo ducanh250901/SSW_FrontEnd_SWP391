@@ -61,7 +61,7 @@ function loadCheckout() {
     let grandTotal = 0;
     if (totalProduct && totalService) {
         grandTotal = totalProduct + totalService;
-    } else if (totalProduct = 0) {
+    } else if (totalProduct === 0) {
         grandTotal = totalService
     } else {
         grandTotal = totalProduct
@@ -80,6 +80,7 @@ function placeOrder() {
             return {
                 productId: item.id,
                 quantity: item.quantity,
+                size: item.size
             };
         });
 

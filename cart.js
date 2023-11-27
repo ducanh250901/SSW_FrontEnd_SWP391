@@ -28,7 +28,11 @@ cart.forEach((product, index) => {
     <div class="input-group-prepend">
       <button class="btn btn-outline-primary js-btn-minus" onclick="updateQuantity(${index}, -1)" type="button">&minus;</button>
     </div>
-    <input type="text" class="form-control text-center" value="${product.quantity}" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" id="quantity-${index}">
+    <input type="text" class="form-control text-center" 
+    value="${product.quantity}"
+     placeholder="" 
+     aria-label="Example text with button addon" 
+     aria-describedby="button-addon1" id="quantity-${index}" oninput="updateTotalOnInput(${index})">
     <div class="input-group-append">
       <button class="btn btn-outline-primary js-btn-plus" onclick="updateQuantity(${index}, 1)" type="button">&plus;</button>
     </div>
@@ -38,29 +42,57 @@ cart.forEach((product, index) => {
   onclick="removeProduct(event, ${index})">X</button>`;
 });
 
+// Hàm cập nhật tổng giá trị
+function updateTotal() {
+  let total = 0;
+
+  // Lặp qua các sản phẩm trong giỏ hàng
+  cart.forEach(product => {
+    total += product.price * product.quantity;
+  });
+
+}
+
 // hàm xóa sản phẩm khỏi giỏ hàng để truyền event
 function removeProduct(event, index) {
+  // Xác định sản phẩm cần xóa
+  const removedProduct = cart[index];
+
+  // Loại bỏ sản phẩm khỏi giỏ hàng
   cart.splice(index, 1);
+  console.log(cart);
+
+  // Cập nhật giao diện ngay lập tức
+  const row = event.target.parentNode.parentNode;
+  row.remove();
+
+  // Cập nhật tổng giá trị
+  updateTotal();
+
+  // Lưu giỏ hàng mới vào Local Storage
   localStorage.setItem('cart', JSON.stringify(cart));
-  const row = event.target.parentNode.parentNode; // Xác định hàng cần xóa
-  row.remove(); // Loại bỏ hàng khỏi bảng
 }
+
 
 function updateQuantity(index, change) {
   const inputQuantity = document.getElementById(`quantity-${index}`);
   let newQuantity = parseInt(inputQuantity.value) + change;
 
-  if (newQuantity < 1) {
-    newQuantity = 1;
+  if (newQuantity >= 1) {
+    cart[index].quantity = newQuantity;
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
-
   cart[index].quantity = newQuantity;
-  localStorage.setItem('cart', JSON.stringify(cart));
+
 
   // Cập nhật giá trị trong bảng
   const row = inputQuantity.closest('tr');
-  row.cells[3].textContent = newQuantity;  // Cập nhật cell4 với giá trị mới
-  row.cells[5].textContent = cart[index].price * newQuantity;  // Cập nhật cell5 với giá trị mới
+  row.cells[4].textContent = newQuantity; // Cập nhật cell4 với giá trị mới
+  row.cells[5].textContent = cart[index].price * newQuantity; // Cập nhật cell5 với giá trị mới
+
+  console.log('newquantity: >>', newQuantity);
+  console.log('new Price: >>', row.cells[5].textContent);
+  updateTotal();
 }
 
 

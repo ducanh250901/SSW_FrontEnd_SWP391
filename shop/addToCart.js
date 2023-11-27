@@ -7,7 +7,7 @@ function addToCart() {
     console.log('Selected Size:', selectedSize);
     // Lấy thông tin sản phẩm từ local storage
     let storedProductDetail = JSON.parse(localStorage.getItem('productDataDetail')) || {};
-    console.log('product:>>', storedProductDetail);
+    console.log('storedProductDetail:>>', storedProductDetail);
 
     if (storedProductDetail && selectedSize) {
         const cart = {
